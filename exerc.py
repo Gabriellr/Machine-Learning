@@ -32,5 +32,11 @@ classe = base.iloc[:,4].values
 
 from sklearn.preprocessing import Imputer
 Imputer = Imputer(missing_values ='NaN', strategy='mean', axis=0)
-imputerr = Imputer.fit(previsores[:, 0:3])
+imputer = Imputer.fit(previsores[:, 0:3])
 previsores[:,0:3] = Imputer.transform(previsores[:,0:3])
+
+
+from sklearn.preprocessing import StandardScaler
+scaler =StandardScaler()
+previsores = scaler.fit_transform(previsores)
+base.describe()
