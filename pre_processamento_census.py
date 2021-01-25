@@ -10,11 +10,14 @@ import pandas as pd
 
 base = pd.read_csv('census.csv')
 
-previsores = base.iloc[:, 0:14].values
+previsores = base.iloc[:,0:14].values
 classe = base.iloc[:,14].values
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 Labelencoder_previsores = LabelEncoder()
+
+
+
 
 #labels = Labelencoder_previsores.fit_transform(previsores[:,1])
 
@@ -26,3 +29,13 @@ previsores[:,7] = Labelencoder_previsores.fit_transform(previsores[:,7])
 previsores[:,8] = Labelencoder_previsores.fit_transform(previsores[:,8])
 previsores[:,9] = Labelencoder_previsores.fit_transform(previsores[:,9])
 previsores[:,13] = Labelencoder_previsores.fit_transform(previsores[:,13])
+
+
+onehotencoder = OneHotEncoder()
+previsores = onehotencoder.fit_transform(previsores).toarray()
+previsores = previsores[:, 0:]
+
+onehotencorder = ColumnTransformer(transformers=[("OneHot", OneHotEncoder(), [1,3,5,6,7,8,9,13])],remainder='passthrough')
+
+labelencoder_classe = LabelEncoder()
+classe = labelencoder_classe.fit_transform(classe)
