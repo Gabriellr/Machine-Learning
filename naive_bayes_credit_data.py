@@ -26,3 +26,8 @@ previsores = scaler.fit_transform(previsores)
 
 from sklearn.model_selection import train_test_split
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.25, random_state=0)
+
+
+from sklearn.naive_bayes import GaussianNB
+classificador = GaussianNB()
+classificador.fit(previsores_treinamento, classe_treinamento)
