@@ -23,4 +23,5 @@ from sklearn.naive_bayes import GaussianNB
 classificador = GaussianNB()
 classificador.fit(previsores, classe)
 
-resultado = classificador.predict([[0,0,1,2]])
+print(classificador.clases_)
+print(classificador.class_count_)
