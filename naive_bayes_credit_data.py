@@ -31,3 +31,8 @@ previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = tra
 from sklearn.naive_bayes import GaussianNB
 classificador = GaussianNB()
 classificador.fit(previsores_treinamento, classe_treinamento)
+previsores = classificador.predict(previsores_teste)
+
+from sklearn.metrics import confusion_matrix, accuracy_score
+precisao = accuracy_score(classe_teste, previsores)
+matriz = confusion_matrix(classe_teste, previsores)
