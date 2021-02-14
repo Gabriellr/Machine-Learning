@@ -16,6 +16,9 @@ from sklearn.preprocessing import LabelEncoder
 labelencoder = LabelEncoder()
 previsores[:,0] = labelencoder.fit(previsores[:,0])
 previsores[:,0] = labelencoder.fit(previsores[:,0])
+previsores[:,0] = labelencoder.fit(previsores[:,0])
+previsores[:,0] = labelencoder.fit(previsores[:,0])
+previsores[:,0] = labelencoder.fit(previsores[:,0])
 
 from sklearn.naive_bayes import GaussianNB
 classificador = GaussianNB()
