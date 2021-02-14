@@ -13,7 +13,7 @@ base = pd.read_csv('census.csv')
 previsores = base.iloc[:,0:14].values
 classe = base.iloc[:,14].values
 
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 Labelencoder_previsores = LabelEncoder()
 
 
@@ -39,3 +39,10 @@ onehotencorder = ColumnTransformer(transformers=[("OneHot", OneHotEncoder(), [1,
 
 labelencoder_classe = LabelEncoder()
 classe = labelencoder_classe.fit_transform(classe)
+
+scaler = StandardScaler()
+
+previsores = scaler.fit_transform(previsores)
+
+from sklearn.model_selection import train_test_split
+previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.25, random_state=0)
