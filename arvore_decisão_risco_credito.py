@@ -6,6 +6,7 @@ Created on Mon Feb 22 08:48:10 2021
 """
 
 import pandas as pd
+import numpy as np
 
 base = pd.read_csv('risco_credito.csv')
 previsores = base.iloc[:,0:4].values
