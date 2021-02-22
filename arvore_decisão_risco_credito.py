@@ -6,7 +6,6 @@ Created on Mon Feb 22 08:48:10 2021
 """
 
 import pandas as pd
-import numpy as np
 
 base = pd.read_csv('risco_credito.csv')
 previsores = base.iloc[:,0:4].values
@@ -19,6 +18,10 @@ previsores[:,1] = labelencoder.fit_transform(previsores[:,1])
 previsores[:,2] = labelencoder.fit_transform(previsores[:,2])
 previsores[:,3] = labelencoder.fit_transform(previsores[:,3])
                  
+from sklearn.tree import DecisionTreeClassifier
+classificador = DecisionTreeClassifier(criterion='entropy')
+classificador.fit(previsores, classe)
+
 from sklearn.naive_bayes import GaussianNB
 classificador = GaussianNB()
 classificador.fit(previsores, classe)
