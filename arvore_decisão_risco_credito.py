@@ -21,6 +21,18 @@ previsores[:,3] = labelencoder.fit_transform(previsores[:,3])
 from sklearn.tree import DecisionTreeClassifier
 classificador = DecisionTreeClassifier(criterion='entropy')
 classificador.fit(previsores, classe)
+print(classificador.feature_importances_)
+
+
+from sklearn.datasets import load_iris
+from sklearn import tree
+
+tree.export_graphviz(classificador,
+                       out_file ='arvore.dot',
+                       feature_names=['historia','divida','garantes','rendas'],
+                       class_names=['altos','moderado','baixo'],
+                       filled = True,
+                       leaves_parallel=True)
 
 from sklearn.naive_bayes import GaussianNB
 classificador = GaussianNB()
